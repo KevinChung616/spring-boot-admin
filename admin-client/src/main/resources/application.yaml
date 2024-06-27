@@ -1,0 +1,25 @@
+# To expose specific actuator endpoints
+spring:
+  application:
+    name: ADMIN-CLIENT
+  boot:
+    admin:
+      client:
+        url: http://localhost:8082
+        enabled: true
+        auto-registration: true
+        instance:
+          name: ${spring.application.name:JSS}
+
+management:
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      enabled: true
+
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /actuator
