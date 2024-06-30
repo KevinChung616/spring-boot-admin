@@ -17,6 +17,8 @@ management:
       show-details: always
     metrics:
       enabled: true
+    loggers:
+      enabled: true
 
   endpoints:
     web:
