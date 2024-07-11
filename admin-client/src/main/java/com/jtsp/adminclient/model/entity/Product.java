@@ -1,5 +1,6 @@
-package com.jtsp.adminclient;
+package com.jtsp.adminclient.model.entity;
 
+import jakarta.persistence.*;
 import lombok.*;
 
 @Data
@@ -7,10 +8,23 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Builder
-public class ProductDTO {
+@Entity
+@Table
+public class Product {
 
+    @Id
+    @GeneratedValue
+    @Column
     private Long productId;
+
+    @Column
     private String name;
+
+    @Column
     private String category;
+
+    @Column
     private Long amount;
+
+
 }

@@ -1,5 +1,6 @@
 package com.jtsp.adminclient;
 
+import com.jtsp.adminclient.model.dto.ProductDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,13 +28,4 @@ public class AdminClientApplication {
         log.error("this is error level hi.");
         return ResponseEntity.ok("check the log.");
     }
-
-    @PostMapping("/products")
-    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) {
-        log.debug("accept request to create product: {}", productDTO.toString());
-        log.info("simulate creating product logic, create success!");
-        return ResponseEntity.ok(productDTO);
-    }
-
-
 }

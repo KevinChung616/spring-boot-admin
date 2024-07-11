@@ -1,5 +1,23 @@
-# To expose specific actuator endpoints
 spring:
+  datasource:
+    url: jdbc:h2:mem:productDB
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
   application:
     name: ADMIN-CLIENT
   boot:
@@ -11,10 +29,18 @@ spring:
         instance:
           name: ${spring.application.name:JSS}
 
+# To expose specific actuator endpoints
+## sumologic: online platform, splunk --> ELK
+## kafdrop,   加密payload message
+## error
 management:
   endpoint:
     health:
       show-details: always
+    env:
+      show-values: always
+    configprops:
+      show-values: always
     metrics:
       enabled: true
     loggers:
@@ -25,3 +51,8 @@ management:
       exposure:
         include: '*'
       base-path: /actuator
+
+#logging:
+#  pattern:
+#    level: '%5p'
+#    console: "%d{yyyy-MM-dd'T'HH:mm:ss.SSSX} %5p --- [%15.15t] %-40.40logger{39} : %m%n%wEx"
